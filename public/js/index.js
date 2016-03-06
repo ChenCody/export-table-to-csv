@@ -2,11 +2,13 @@
  * Created by baidu on 16/3/5.
  */
 $(function() {
-    $('.urlSubmit').on('click', function() {
+    $('.url-submit').on('click', function() {
+        $('.table-wrapper').html('<h1>正在搜索,喝杯茶冷静一下</h1>');
+
         $.ajax({
             url:'/inputUrl',
             method: 'get',
-            data: {url: $('.urlInput').val()}
+            data: {url: $('.url-input').val()}
         }).done(function(data) {
             var appendString = '';
             if(data.status === 0) {
@@ -29,15 +31,15 @@ $(function() {
                 appendString += '<h1>出现了一些错误,请检查URL是否正确输入!稍等一下再重试</h1>';
             }
 
-            $('.tableWrapper').html(appendString);
+            $('.table-wrapper').html(appendString);
 
         })
             .error(function() {
-                $('.tableWrapper').html('<h1>哦啊,出错了!可能是输入的网址有误,或者服务器出了问题~</h1>');
+                $('.table-wrapper').html('<h1>哦啊,出错了!可能是输入的网址有误,或者服务器出了问题~</h1>');
             })
     });
 
-    $('.tableWrapper').delegate('.dlCsv', 'click', function() {
+    $('.table-wrapper').delegate('.dlCsv', 'click', function() {
         var matrix = tableToArray($(this).closest('li').find('table'));
         downloadExcelCsv(matrix, 'data.csv');
     })

@@ -1,13 +1,24 @@
 doctype html
 html
   head
-    title html table to csv
-    link(rel='stylesheet', href='/css/index.css')
+    title Export table to csv
+    link(rel='stylesheet', href='/style/css/index.css')
   body
-    input.urlInput(type='text')
-    button.urlSubmit(type='button') 点击确认
+    header.body-header
+      h1 导出网页中的table
+    main.body-wrapper
+      div.input-area
+        input.url-input(type='text',placeholder='输入需要导出的页面的网址(url)')
+        button.url-submit(type='button') start!
 
-    div.tableWrapper
+      div.table-wrapper
+        p.info.
+          这个网站的作用是提取出目标网站里的table,并且可以下载成csv格式.（可能有后续功能吧.....可能.....）<br/>
+          说明:<br/>
+          &emsp;1.现在上面的输入框中输入需要提取的网站的url,如(https://www.google.com.hk/#q=table)<br/>
+          &emsp;2.点击start按钮开始(查询过程可能会有几秒时间,如果等了一会结果或者报错,有可能是服务器挂了or你输入的链接有问题)<br/>
+          &emsp;3.在这个区域里显示的表格里,每个表格对应一个下载按钮,点击之后可以以CSV格式下载到本地.（常用的读取表格的工具都支持CSV）
+
 
     script(src='//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js')
     script(src='/js/export-table.js')
